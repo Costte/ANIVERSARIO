@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Feliz 4° Aniversario</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,13 +11,14 @@
       box-sizing: border-box; 
       margin: 0; 
       padding: 0; 
+      touch-action: manipulation;
     }
 
     body {
       font-family: 'Pacifico', 'Dancing Script', cursive;
       background: linear-gradient(135deg, #fff0f5, #ffe6ee, #fff9f9);
       overflow: hidden;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -42,7 +43,8 @@
     }
 
     .calendar-cover {
-      width: 350px;
+      width: 90%;
+      max-width: 350px;
       cursor: pointer;
       transition: transform 0.5s ease;
       border-radius: 20px;
@@ -66,11 +68,11 @@
       display: none;
       flex-direction: column;
       align-items: center;
-      padding: 40px;
+      padding: 20px;
       background: linear-gradient(to bottom right, #fff9fb, #fff0f8);
       border: 5px double #ff4081;
-      border-radius: 40px;
-      width: 90vw;
+      border-radius: 30px;
+      width: 95vw;
       max-width: 650px;
       max-height: 95vh;
       overflow-y: auto;
@@ -85,51 +87,51 @@
     .letter-container::after {
       content: "🌹";
       position: absolute;
-      font-size: 2.5rem;
+      font-size: 2rem;
       opacity: 0.7;
     }
 
     .letter-container::before {
-      top: 15px;
-      left: 20px;
+      top: 10px;
+      left: 15px;
     }
 
     .letter-container::after {
-      bottom: 15px;
-      right: 20px;
+      bottom: 10px;
+      right: 15px;
     }
 
     .letter-container h2 {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       color: #ff4081;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       text-shadow: 
         0 0 5px #ff1177,
         0 0 10px #ff1177,
-        0 0 20px #ff1177,
-        0 0 40px #ff1177;
-      letter-spacing: 2px;
+        0 0 20px #ff1177;
+      letter-spacing: 1px;
       position: relative;
       z-index: 2;
       animation: neonGlow 1.5s ease-in-out infinite alternate;
+      padding: 0 10px;
     }
 
     @keyframes neonGlow {
       from { text-shadow: 0 0 5px #ff1177, 0 0 10px #ff1177, 0 0 20px #ff1177; }
-      to { text-shadow: 0 0 10px #ff1177, 0 0 20px #ff1177, 0 0 30px #ff1177, 0 0 40px #ff1177; }
+      to { text-shadow: 0 0 10px #ff1177, 0 0 20px #ff1177, 0 0 30px #ff1177; }
     }
 
     .photo-frame {
       position: relative;
-      width: 90%;
+      width: 95%;
       max-width: 450px;
-      margin: 25px 0;
-      padding: 20px;
+      margin: 15px 0;
+      padding: 15px;
       background: linear-gradient(45deg, #ffebf3, #ffe6f0);
-      border-radius: 20px;
+      border-radius: 15px;
       box-shadow: 
-        0 0 20px rgba(255, 64, 129, 0.4),
-        inset 0 0 20px rgba(255, 255, 255, 0.8);
+        0 0 15px rgba(255, 64, 129, 0.4),
+        inset 0 0 15px rgba(255, 255, 255, 0.8);
       transform: rotate(-2deg);
       z-index: 1;
     }
@@ -137,18 +139,18 @@
     .photo-frame::before {
       content: "";
       position: absolute;
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
       border: 2px dashed #ff80ab;
-      border-radius: 15px;
+      border-radius: 12px;
       pointer-events: none;
     }
 
     .photo-frame img.photo {
       width: 100%;
-      border-radius: 15px;
+      border-radius: 12px;
       border: 4px solid white;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       transition: transform 0.5s ease;
@@ -161,40 +163,40 @@
     /* Decoraciones de gatos y rosas alrededor del marco */
     .decoration {
       position: absolute;
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       z-index: 2;
     }
 
-    .decoration:nth-child(1) { top: -15px; left: -15px; }
-    .decoration:nth-child(2) { top: -15px; right: -15px; }
-    .decoration:nth-child(3) { bottom: -15px; left: -15px; }
-    .decoration:nth-child(4) { bottom: -15px; right: -15px; }
+    .decoration:nth-child(1) { top: -10px; left: -10px; }
+    .decoration:nth-child(2) { top: -10px; right: -10px; }
+    .decoration:nth-child(3) { bottom: -10px; left: -10px; }
+    .decoration:nth-child(4) { bottom: -10px; right: -10px; }
 
     .letter-container p {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: #c2185b;
-      margin: 20px 0;
-      padding: 0 20px;
+      margin: 15px 0;
+      padding: 0 10px;
       line-height: 1.6;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
       position: relative;
     }
 
     .letter-container p::first-letter {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: #ff4081;
     }
 
     .contador {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: #d81b60;
-      margin: 15px 0;
-      padding: 12px 25px;
+      margin: 12px 0;
+      padding: 10px 15px;
       background: rgba(255, 255, 255, 0.7);
-      border-radius: 30px;
+      border-radius: 25px;
       box-shadow: 
-        0 5px 15px rgba(0,0,0,0.1),
-        0 0 10px rgba(255, 20, 147, 0.4);
+        0 4px 10px rgba(0,0,0,0.1),
+        0 0 8px rgba(255, 20, 147, 0.4);
       position: relative;
       z-index: 2;
       text-shadow: 
@@ -211,10 +213,10 @@
     }
 
     .firma {
-      font-size: 2rem;
+      font-size: 1.6rem;
       color: #d81b60;
-      margin: 20px 0;
-      padding: 10px 30px;
+      margin: 15px 0;
+      padding: 8px 20px;
       border-top: 2px dotted #ff80ab;
       position: relative;
     }
@@ -222,22 +224,22 @@
     .firma::after {
       content: "🐾";
       position: absolute;
-      bottom: -15px;
-      right: 20px;
-      font-size: 1.8rem;
+      bottom: -12px;
+      right: 15px;
+      font-size: 1.4rem;
     }
 
     .button-container {
       display: flex;
       justify-content: center;
       width: 100%;
-      padding: 20px 0;
+      padding: 15px 0;
       position: sticky;
       bottom: 0;
       background: rgba(255, 249, 251, 0.8);
       z-index: 10;
-      border-radius: 0 0 40px 40px;
-      margin-top: 15px;
+      border-radius: 0 0 30px 30px;
+      margin-top: 10px;
       backdrop-filter: blur(5px);
     }
 
@@ -245,9 +247,9 @@
       background: linear-gradient(to right, #ec407a, #ff4081);
       color: white;
       border: none;
-      padding: 15px 35px;
-      font-size: 1.5rem;
-      border-radius: 40px;
+      padding: 12px 25px;
+      font-size: 1.3rem;
+      border-radius: 35px;
       cursor: pointer;
       box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
       transition: all 0.3s ease;
@@ -288,8 +290,8 @@
     /* Corazones flotantes */
     .heart {
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       background-color: #ff4081;
       transform: rotate(45deg);
       opacity: 0;
@@ -300,20 +302,20 @@
     .heart::after {
       content: '';
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       background-color: #ff4081;
       border-radius: 50%;
     }
 
     .heart::before {
-      top: -10px;
+      top: -7.5px;
       left: 0;
     }
 
     .heart::after {
       top: 0;
-      left: -10px;
+      left: -7.5px;
     }
 
     @keyframes float {
@@ -336,7 +338,7 @@
     /* Flores animadas */
     .flower {
       position: absolute;
-      font-size: 2rem;
+      font-size: 1.5rem;
       opacity: 0;
       z-index: 0;
       animation: flowerFall 15s linear infinite;
@@ -362,7 +364,7 @@
     /* Animación para el título */
     @keyframes titleFloat {
       0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
       100% { transform: translateY(0); }
     }
 
@@ -392,16 +394,17 @@
     
     .modal-content {
       background: linear-gradient(to bottom right, #fff0f8, #ffebf3);
-      border-radius: 25px;
+      border-radius: 20px;
       width: 90%;
       max-width: 500px;
-      padding: 40px;
+      padding: 25px;
       text-align: center;
       position: relative;
-      box-shadow: 0 0 40px rgba(233, 30, 99, 0.8);
-      border: 8px double #ff4081;
+      box-shadow: 0 0 30px rgba(233, 30, 99, 0.8);
+      border: 6px double #ff4081;
       animation: modalAppear 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transform-origin: center;
+      margin: 0 15px;
     }
     
     @keyframes modalAppear {
@@ -410,27 +413,28 @@
     }
     
     .modal-content h3 {
-      font-size: 2.8rem;
+      font-size: 2.2rem;
       color: #ff4081;
-      margin-bottom: 25px;
-      text-shadow: 0 0 10px rgba(255, 17, 119, 0.6);
+      margin-bottom: 15px;
+      text-shadow: 0 0 8px rgba(255, 17, 119, 0.6);
     }
     
     .modal-content p {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: #c2185b;
-      line-height: 1.6;
-      margin: 20px 0;
+      line-height: 1.5;
+      margin: 15px 0;
     }
     
     .modal-close {
       position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2rem;
+      top: 10px;
+      right: 15px;
+      font-size: 1.8rem;
       color: #ff4081;
       cursor: pointer;
       transition: all 0.3s ease;
+      padding: 5px 10px;
     }
     
     .modal-close:hover {
@@ -440,14 +444,14 @@
     
     .modal-decoration {
       position: absolute;
-      font-size: 3rem;
+      font-size: 2rem;
       z-index: 2;
     }
     
-    .modal-decoration:nth-child(1) { top: 10px; left: 10px; }
-    .modal-decoration:nth-child(2) { top: 10px; right: 10px; }
-    .modal-decoration:nth-child(3) { bottom: 10px; left: 10px; }
-    .modal-decoration:nth-child(4) { bottom: 10px; right: 10px; }
+    .modal-decoration:nth-child(1) { top: 8px; left: 8px; }
+    .modal-decoration:nth-child(2) { top: 8px; right: 8px; }
+    .modal-decoration:nth-child(3) { bottom: 8px; left: 8px; }
+    .modal-decoration:nth-child(4) { bottom: 8px; right: 8px; }
     
     .modal-hearts {
       position: absolute;
@@ -460,8 +464,8 @@
     
     .modal-heart {
       position: absolute;
-      width: 15px;
-      height: 15px;
+      width: 12px;
+      height: 12px;
       background-color: #ff4081;
       transform: rotate(45deg);
       opacity: 0;
@@ -472,25 +476,25 @@
     .modal-heart::after {
       content: '';
       position: absolute;
-      width: 15px;
-      height: 15px;
+      width: 12px;
+      height: 12px;
       background-color: #ff4081;
       border-radius: 50%;
     }
     
     .modal-heart::before {
-      top: -7.5px;
+      top: -6px;
       left: 0;
     }
     
     .modal-heart::after {
       top: 0;
-      left: -7.5px;
+      left: -6px;
     }
     
     @keyframes modalFloat {
       0% {
-        transform: translateY(100px) rotate(45deg);
+        transform: translateY(80px) rotate(45deg);
         opacity: 0;
       }
       20% {
@@ -500,8 +504,113 @@
         opacity: 0.8;
       }
       100% {
-        transform: translateY(-100px) rotate(45deg);
+        transform: translateY(-80px) rotate(45deg);
         opacity: 0;
+      }
+    }
+
+    /* Media Queries para móviles */
+    @media (max-width: 768px) {
+      .letter-container {
+        padding: 15px;
+        border-radius: 25px;
+      }
+      
+      .letter-container h2 {
+        font-size: 2.2rem;
+      }
+      
+      .letter-container p {
+        font-size: 1.4rem;
+      }
+      
+      .contador {
+        font-size: 1.1rem;
+        padding: 8px 12px;
+      }
+      
+      .firma {
+        font-size: 1.5rem;
+      }
+      
+      button {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calendar-cover {
+        width: 95%;
+      }
+      
+      .letter-container {
+        padding: 12px;
+        border-radius: 20px;
+      }
+      
+      .letter-container h2 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+      
+      .letter-container p {
+        font-size: 1.3rem;
+        margin: 10px 0;
+      }
+      
+      .contador {
+        font-size: 1rem;
+        padding: 6px 10px;
+      }
+      
+      .firma {
+        font-size: 1.3rem;
+        margin: 10px 0;
+      }
+      
+      .button-container {
+        padding: 10px 0;
+      }
+      
+      button {
+        font-size: 1.1rem;
+        padding: 8px 16px;
+      }
+      
+      .photo-frame {
+        padding: 12px;
+        margin: 10px 0;
+      }
+      
+      .decoration {
+        font-size: 1.2rem;
+      }
+      
+      .modal-content {
+        padding: 20px 15px;
+        border-radius: 15px;
+      }
+      
+      .modal-content h3 {
+        font-size: 1.8rem;
+      }
+      
+      .modal-content p {
+        font-size: 1.3rem;
+      }
+      
+      .modal-close {
+        font-size: 1.5rem;
+        top: 5px;
+        right: 10px;
+      }
+    }
+
+    /* Evitar zoom en inputs */
+    @media screen and (max-width: 768px) {
+      input, select, textarea {
+        font-size: 16px !important;
       }
     }
   </style>
@@ -555,23 +664,23 @@
       
       <h3>¡Una Sorpresa Especial!</h3>
       
-      <p style="font-size: 2.2rem; margin-top: 30px;">
+      <p style="font-size: 1.8rem; margin-top: 20px;">
         <i class="fas fa-heart" style="color: #ff4081;"></i> 
         Mi amor...
       </p>
       
-      <p style="font-size: 1.9rem; margin-top: 15px;">
-        Quiero compartir contigo la mitad de mi vida<br>
-        si tú me das la mitad de la tuya...
+      <p style="font-size: 1.6rem; margin-top: 12px;">
+        Te dare la mitad de mi vida <br>
+        si me das la mitad de la tuya
       </p>
       
-      <p style="font-size: 2rem; margin-top: 30px; color: #ff4081;">
+      <p style="font-size: 1.7rem; margin-top: 20px; color: #ff4081;">
         ¡Así podremos construir una eternidad juntos! 
         <i class="fas fa-infinity" style="color: #ff4081;"></i>
       </p>
       
-      <div style="margin-top: 40px;">
-        <p style="font-size: 1.6rem; color: #d81b60;">
+      <div style="margin-top: 30px;">
+        <p style="font-size: 1.4rem; color: #d81b60;">
           Cada día a tu lado es un regalo,<br>
           cada momento contigo es un tesoro<br>
           que atesoro en mi corazón.
@@ -580,7 +689,7 @@
       
       <div class="modal-hearts" id="modalHearts"></div>
       
-      <button onclick="cerrarSorpresa()" style="margin-top: 30px; font-size: 1.4rem;">
+      <button onclick="cerrarSorpresa()" style="margin-top: 20px; font-size: 1.2rem;">
         <i class="fas fa-heart"></i> ¡Te amo con todo mi ser!
       </button>
     </div>
@@ -595,18 +704,23 @@
     const sorpresaModal = document.getElementById('sorpresaModal');
     const modalHearts = document.getElementById('modalHearts');
 
-    calendar.onclick = () => {
+    // Función para manejar el evento de clic/touch
+    function handleCalendarClick() {
       calendar.style.display = 'none';
       letter.style.display = 'flex';
       
       // Reproducir música
-      musica.volume = 0.5;
+      musica.volume = 0.3;
       musica.play().catch(e => console.log("La reproducción automática fue bloqueada: ", e));
       
       iniciarContador();
       crearCorazones();
       crearFlores();
-    };
+    }
+
+    // Agregar eventos para dispositivos táctiles y ratón
+    calendar.addEventListener('click', handleCalendarClick);
+    calendar.addEventListener('touchstart', handleCalendarClick);
 
     function sorpresa() {
       // Mostrar el modal de sorpresa
@@ -616,7 +730,7 @@
       crearCorazonesModal();
       
       // Crear efecto de confeti
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 30; i++) {
         setTimeout(() => {
           const confeti = document.createElement('div');
           confeti.className = 'heart';
@@ -640,7 +754,7 @@
       modalHearts.innerHTML = '';
       
       // Crear nuevos corazones para el modal
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 15; i++) {
         setTimeout(() => {
           const heart = document.createElement('div');
           heart.className = 'modal-heart';
@@ -651,7 +765,7 @@
           
           // Eliminar después de la animación
           setTimeout(() => heart.remove(), 5000);
-        }, i * 150);
+        }, i * 200);
       }
     }
 
@@ -666,7 +780,7 @@
       const segundos = Math.floor((dif / 1000) % 60);
 
       document.getElementById('contador').innerHTML = 
-        `🐾 Juntos desde hace: <br><span style="font-size:1.8rem; color:#ff4081; text-shadow: 0 0 5px rgba(255, 64, 129, 0.6);">${dias} días, ${horas} horas, ${minutos} min, ${segundos} seg</span> ❤️`;
+        `🐾 Juntos desde hace: <br><span style="font-size:1.4rem; color:#ff4081; text-shadow: 0 0 5px rgba(255, 64, 129, 0.6);">${dias} días, ${horas} horas, ${minutos} min, ${segundos} seg</span> ❤️`;
 
       setTimeout(iniciarContador, 1000);
     }
@@ -682,7 +796,7 @@
         
         // Eliminar después de la animación
         setTimeout(() => heart.remove(), 6000);
-      }, 300);
+      }, 400); // Reducir frecuencia para móviles
     }
 
     function crearFlores() {
@@ -691,13 +805,13 @@
         flower.className = 'flower';
         flower.innerHTML = '🌹';
         flower.style.left = Math.random() * 100 + 'vw';
-        flower.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        flower.style.fontSize = (Math.random() * 15 + 10) + 'px';
         flower.style.animationDuration = (Math.random() * 15 + 10) + 's';
         document.body.appendChild(flower);
         
         // Eliminar después de la animación
         setTimeout(() => flower.remove(), 20000);
-      }, 500);
+      }, 700); // Reducir frecuencia para móviles
     }
   </script>
 </body>
