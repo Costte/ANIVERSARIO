@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz 4° Aniversario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    body {
+      font-family: 'Pacifico', 'Dancing Script', cursive;
+      background: linear-gradient(135deg, #fff0f5, #ffe6ee, #fff9f9);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Patrón de fondo con corazones pequeños */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(#ffcce0 1px, transparent 1px),
+        radial-gradient(#ffb3d9 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .calendar-cover {
+      width: 350px;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4);
+      border: 5px solid #ff80ab;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 15px rgba(233, 30, 99, 0.4); }
+      50% { transform: scale(1.02); box-shadow: 0 0 30px rgba(233, 30, 99, 0.7); }
+      100% { transform: scale(1); box-shadow: 0 0 15px rgba(233, 30, 99, 0.4); }
+    }
+
+    .calendar-cover:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 40px rgba(233, 30, 99, 0.8);
+    }
+
+    .letter-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      background: linear-gradient(to bottom right, #fff9fb, #fff0f8);
+      border: 5px double #ff4081;
+      border-radius: 40px;
+      width: 90vw;
+      max-width: 650px;
+      max-height: 95vh;
+      overflow-y: auto;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(216, 27, 96, 0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    /* Decoración de rosas en las esquinas */
+    .letter-container::before,
+    .letter-container::after {
+      content: "🌹";
+      position: absolute;
+      font-size: 2.5rem;
+      opacity: 0.7;
+    }
+
+    .letter-container::before {
+      top: 15px;
+      left: 20px;
+    }
+
+    .letter-container::after {
+      bottom: 15px;
+      right: 20px;
+    }
+
+    .letter-container h2 {
+      font-size: 3.5rem;
+      color: #ff4081;
+      margin-bottom: 25px;
+      text-shadow: 
+        0 0 5px #ff1177,
+        0 0 10px #ff1177,
+        0 0 20px #ff1177,
+        0 0 40px #ff1177;
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 2;
+      animation: neonGlow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes neonGlow {
+      from { text-shadow: 0 0 5px #ff1177, 0 0 10px #ff1177, 0 0 20px #ff1177; }
+      to { text-shadow: 0 0 10px #ff1177, 0 0 20px #ff1177, 0 0 30px #ff1177, 0 0 40px #ff1177; }
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 90%;
+      max-width: 450px;
+      margin: 25px 0;
+      padding: 20px;
+      background: linear-gradient(45deg, #ffebf3, #ffe6f0);
+      border-radius: 20px;
+      box-shadow: 
+        0 0 20px rgba(255, 64, 129, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.8);
+      transform: rotate(-2deg);
+      z-index: 1;
+    }
+
+    .photo-frame::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 2px dashed #ff80ab;
+      border-radius: 15px;
+      pointer-events: none;
+    }
+
+    .photo-frame img.photo {
+      width: 100%;
+      border-radius: 15px;
+      border: 4px solid white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.5s ease;
+    }
+
+    .photo-frame img.photo:hover {
+      transform: scale(1.03);
+    }
+
+    /* Decoraciones de gatos y rosas alrededor del marco */
+    .decoration {
+      position: absolute;
+      font-size: 1.8rem;
+      z-index: 2;
+    }
+
+    .decoration:nth-child(1) { top: -15px; left: -15px; }
+    .decoration:nth-child(2) { top: -15px; right: -15px; }
+    .decoration:nth-child(3) { bottom: -15px; left: -15px; }
+    .decoration:nth-child(4) { bottom: -15px; right: -15px; }
+
+    .letter-container p {
+      font-size: 1.8rem;
+      color: #c2185b;
+      margin: 20px 0;
+      padding: 0 20px;
+      line-height: 1.6;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .letter-container p::first-letter {
+      font-size: 2.5rem;
+      color: #ff4081;
+    }
+
+    .contador {
+      font-size: 1.4rem;
+      color: #d81b60;
+      margin: 15px 0;
+      padding: 12px 25px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 30px;
+      box-shadow: 
+        0 5px 15px rgba(0,0,0,0.1),
+        0 0 10px rgba(255, 20, 147, 0.4);
+      position: relative;
+      z-index: 2;
+      text-shadow: 
+        1px 1px 2px rgba(255, 255, 255, 0.8),
+        -1px -1px 2px rgba(0, 0, 0, 0.1);
+      border: 2px solid rgba(255, 105, 180, 0.3);
+      animation: contadorPulse 3s infinite;
+    }
+
+    @keyframes contadorPulse {
+      0% { box-shadow: 0 5px 15px rgba(0,0,0,0.1), 0 0 10px rgba(255, 20, 147, 0.4); }
+      50% { box-shadow: 0 5px 20px rgba(0,0,0,0.15), 0 0 15px rgba(255, 20, 147, 0.6); }
+      100% { box-shadow: 0 5px 15px rgba(0,0,0,0.1), 0 0 10px rgba(255, 20, 147, 0.4); }
+    }
+
+    .firma {
+      font-size: 2rem;
+      color: #d81b60;
+      margin: 20px 0;
+      padding: 10px 30px;
+      border-top: 2px dotted #ff80ab;
+      position: relative;
+    }
+
+    .firma::after {
+      content: "🐾";
+      position: absolute;
+      bottom: -15px;
+      right: 20px;
+      font-size: 1.8rem;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding: 20px 0;
+      position: sticky;
+      bottom: 0;
+      background: rgba(255, 249, 251, 0.8);
+      z-index: 10;
+      border-radius: 0 0 40px 40px;
+      margin-top: 15px;
+      backdrop-filter: blur(5px);
+    }
+
+    button {
+      background: linear-gradient(to right, #ec407a, #ff4081);
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      font-size: 1.5rem;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      font-family: 'Pacifico', cursive;
+      animation: buttonPulse 2s infinite;
+    }
+
+    @keyframes buttonPulse {
+      0% { transform: scale(1); box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4); }
+      50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(216, 27, 96, 0.6); }
+      100% { transform: scale(1); box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4); }
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
+      z-index: -1;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(216, 27, 96, 0.7);
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    /* Corazones flotantes */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4081;
+      transform: rotate(45deg);
+      opacity: 0;
+      z-index: 0;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4081;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: -10px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Flores animadas */
+    .flower {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0;
+      z-index: 0;
+      animation: flowerFall 15s linear infinite;
+    }
+
+    @keyframes flowerFall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Animación para el título */
+    @keyframes titleFloat {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    h2 {
+      animation: titleFloat 3s ease-in-out infinite;
+    }
+    
+    /* Modal de sorpresa */
+    .sorpresa-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .modal-content {
+      background: linear-gradient(to bottom right, #fff0f8, #ffebf3);
+      border-radius: 25px;
+      width: 90%;
+      max-width: 500px;
+      padding: 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 40px rgba(233, 30, 99, 0.8);
+      border: 8px double #ff4081;
+      animation: modalAppear 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-origin: center;
+    }
+    
+    @keyframes modalAppear {
+      0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0); opacity: 1; }
+    }
+    
+    .modal-content h3 {
+      font-size: 2.8rem;
+      color: #ff4081;
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px rgba(255, 17, 119, 0.6);
+    }
+    
+    .modal-content p {
+      font-size: 1.8rem;
+      color: #c2185b;
+      line-height: 1.6;
+      margin: 20px 0;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2rem;
+      color: #ff4081;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-close:hover {
+      transform: scale(1.2) rotate(90deg);
+      color: #e91e63;
+    }
+    
+    .modal-decoration {
+      position: absolute;
+      font-size: 3rem;
+      z-index: 2;
+    }
+    
+    .modal-decoration:nth-child(1) { top: 10px; left: 10px; }
+    .modal-decoration:nth-child(2) { top: 10px; right: 10px; }
+    .modal-decoration:nth-child(3) { bottom: 10px; left: 10px; }
+    .modal-decoration:nth-child(4) { bottom: 10px; right: 10px; }
+    
+    .modal-hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    
+    .modal-heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: #ff4081;
+      transform: rotate(45deg);
+      opacity: 0;
+      z-index: 0;
+    }
+    
+    .modal-heart::before,
+    .modal-heart::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: #ff4081;
+      border-radius: 50%;
+    }
+    
+    .modal-heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+    
+    .modal-heart::after {
+      top: 0;
+      left: -7.5px;
+    }
+    
+    @keyframes modalFloat {
+      0% {
+        transform: translateY(100px) rotate(45deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="calendario.png" class="calendar-cover" id="calendar" alt="Julio 11">
+
+  <div class="letter-container" id="letter">
+    <h2>💖 Felices 4 Años Mi Amor 💖</h2>
+    
+    <div class="photo-frame">
+      <img src="foto.jpg" alt="Nosotros" class="photo">
+      <div class="decoration">🌹</div>
+      <div class="decoration">🐈</div>
+      <div class="decoration">🐾</div>
+      <div class="decoration">🌸</div>
+    </div>
+    
+    <p>
+      No eres el amor de mi vida,<br>
+      la vida es tan corta para limitar lo que siento por ti.<br>
+      Eres el amor de mi eternidad, de mi universo, de mi tiempo y espacio.<br>
+      No eres el amor de mi vida porque mi vida dejó de ser mía,<br>
+      desde aquel instante en el que te dije: <strong>¡te amo!</strong>
+    </p>
+    
+    <div class="contador" id="contador"></div>
+    
+    <div class="firma">
+      Con todo mi amor,<br>
+      Tu eterno enamorado 💘
+    </div>
+    
+    <div class="button-container">
+      <button onclick="sorpresa()">
+        <i class="fas fa-gift"></i> Haz clic para una sorpresita
+      </button>
+    </div>
+  </div>
+  
+  <!-- Modal para la sorpresa -->
+  <div class="sorpresa-modal" id="sorpresaModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="cerrarSorpresa()">&times;</span>
+      
+      <div class="modal-decoration">💌</div>
+      <div class="modal-decoration">💖</div>
+      <div class="modal-decoration">💘</div>
+      <div class="modal-decoration">💕</div>
+      
+      <h3>¡Una Sorpresa Especial!</h3>
+      
+      <p style="font-size: 2.2rem; margin-top: 30px;">
+        <i class="fas fa-heart" style="color: #ff4081;"></i> 
+        Mi amor...
+      </p>
+      
+      <p style="font-size: 1.9rem; margin-top: 15px;">
+        Quiero compartir contigo la mitad de mi vida<br>
+        si tú me das la mitad de la tuya...
+      </p>
+      
+      <p style="font-size: 2rem; margin-top: 30px; color: #ff4081;">
+        ¡Así podremos construir una eternidad juntos! 
+        <i class="fas fa-infinity" style="color: #ff4081;"></i>
+      </p>
+      
+      <div style="margin-top: 40px;">
+        <p style="font-size: 1.6rem; color: #d81b60;">
+          Cada día a tu lado es un regalo,<br>
+          cada momento contigo es un tesoro<br>
+          que atesoro en mi corazón.
+        </p>
+      </div>
+      
+      <div class="modal-hearts" id="modalHearts"></div>
+      
+      <button onclick="cerrarSorpresa()" style="margin-top: 30px; font-size: 1.4rem;">
+        <i class="fas fa-heart"></i> ¡Te amo con todo mi ser!
+      </button>
+    </div>
+  </div>
+
+  <audio id="musica" src="musica.mp3"></audio>
+
+  <script>
+    const calendar = document.getElementById('calendar');
+    const letter = document.getElementById('letter');
+    const musica = document.getElementById('musica');
+    const sorpresaModal = document.getElementById('sorpresaModal');
+    const modalHearts = document.getElementById('modalHearts');
+
+    calendar.onclick = () => {
+      calendar.style.display = 'none';
+      letter.style.display = 'flex';
+      
+      // Reproducir música
+      musica.volume = 0.5;
+      musica.play().catch(e => console.log("La reproducción automática fue bloqueada: ", e));
+      
+      iniciarContador();
+      crearCorazones();
+      crearFlores();
+    };
+
+    function sorpresa() {
+      // Mostrar el modal de sorpresa
+      sorpresaModal.style.display = 'flex';
+      
+      // Crear efecto de corazones en el modal
+      crearCorazonesModal();
+      
+      // Crear efecto de confeti
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const confeti = document.createElement('div');
+          confeti.className = 'heart';
+          confeti.style.left = Math.random() * 100 + 'vw';
+          confeti.style.animation = `float ${Math.random() * 3 + 2}s linear forwards`;
+          confeti.style.setProperty('--c', `hsl(${Math.random() * 360}, 100%, 60%)`);
+          document.body.appendChild(confeti);
+          
+          // Eliminar después de la animación
+          setTimeout(() => confeti.remove(), 5000);
+        }, i * 100);
+      }
+    }
+    
+    function cerrarSorpresa() {
+      sorpresaModal.style.display = 'none';
+    }
+    
+    function crearCorazonesModal() {
+      // Limpiar corazones anteriores
+      modalHearts.innerHTML = '';
+      
+      // Crear nuevos corazones para el modal
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.className = 'modal-heart';
+          heart.style.left = Math.random() * 100 + '%';
+          heart.style.animation = `modalFloat ${Math.random() * 3 + 2}s linear forwards`;
+          heart.style.setProperty('--c', `hsl(${Math.random() * 360}, 100%, 60%)`);
+          modalHearts.appendChild(heart);
+          
+          // Eliminar después de la animación
+          setTimeout(() => heart.remove(), 5000);
+        }, i * 150);
+      }
+    }
+
+    function iniciarContador() {
+      const inicio = new Date("2021-07-11T00:00:00");
+      const ahora = new Date();
+      const dif = ahora - inicio;
+
+      const dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((dif / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((dif / (1000 * 60)) % 60);
+      const segundos = Math.floor((dif / 1000) % 60);
+
+      document.getElementById('contador').innerHTML = 
+        `🐾 Juntos desde hace: <br><span style="font-size:1.8rem; color:#ff4081; text-shadow: 0 0 5px rgba(255, 64, 129, 0.6);">${dias} días, ${horas} horas, ${minutos} min, ${segundos} seg</span> ❤️`;
+
+      setTimeout(iniciarContador, 1000);
+    }
+
+    function crearCorazones() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animation = `float ${Math.random() * 5 + 5}s linear forwards`;
+        heart.style.setProperty('--c', `hsl(${Math.random() * 360}, 100%, 60%)`);
+        document.body.appendChild(heart);
+        
+        // Eliminar después de la animación
+        setTimeout(() => heart.remove(), 6000);
+      }, 300);
+    }
+
+    function crearFlores() {
+      setInterval(() => {
+        const flower = document.createElement('div');
+        flower.className = 'flower';
+        flower.innerHTML = '🌹';
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        flower.style.animationDuration = (Math.random() * 15 + 10) + 's';
+        document.body.appendChild(flower);
+        
+        // Eliminar después de la animación
+        setTimeout(() => flower.remove(), 20000);
+      }, 500);
+    }
+  </script>
+</body>
+</html>
